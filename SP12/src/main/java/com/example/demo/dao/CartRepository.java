@@ -10,7 +10,7 @@ import com.example.demo.model.ProductInCart;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class Cart {
+public class CartRepository {
     private List<ProductInCart> productInCartList = new ArrayList<>();
 
     public List<ProductInCart> getProductInCartList() {
