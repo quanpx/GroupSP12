@@ -27,6 +27,11 @@ public class CartService {
     }
 
     public List<ProductInCart> getCart() {
+	    for (ProductInCart p: cart.getProductInCartList()
+             ) {
+            p.setPrice(productRepository.findById(p.getProduct_id()).get().getPrice());
+            p.setProduct_name(productRepository.findById(p.getProduct_id()).get().getProduct_name());
+        };
 		return cart.getProductInCartList();
 	}
 
