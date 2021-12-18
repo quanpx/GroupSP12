@@ -1,11 +1,11 @@
-package com.example.demo.dao;
+package com.hust.wearcorporation.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.dto.ProductInCart;
-import com.example.demo.model.Product;
+import com.hust.wearcorporation.dto.ProductInCart;
+import com.hust.wearcorporation.model.Product;
 
 import org.springframework.stereotype.Repository;
 

@@ -1,11 +1,11 @@
-package com.example.demo.service.impl;
+package com.hust.wearcorporation.service.impl;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.dao.ProductRepository;
-import com.example.demo.model.Product;
-import com.example.demo.service.ProductService;
+import com.hust.wearcorporation.dao.ProductRepository;
+import com.hust.wearcorporation.model.Product;
+import com.hust.wearcorporation.service.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

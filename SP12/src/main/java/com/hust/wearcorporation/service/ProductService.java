@@ -1,8 +1,8 @@
-package com.example.demo.service;
+package com.hust.wearcorporation.service;
 
 import java.util.List;
 
-import com.example.demo.model.Product;
+import com.hust.wearcorporation.model.Product;
 
 public interface ProductService {
     public List<Product> getProducts();

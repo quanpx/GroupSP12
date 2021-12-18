@@ -1,13 +1,13 @@
-package com.example.demo.service.impl;
+package com.hust.wearcorporation.service.impl;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.dao.CartRepository;
-import com.example.demo.dao.ProductRepository;
-import com.example.demo.dto.ProductInCart;
-import com.example.demo.model.Product;
-import com.example.demo.service.CartService;
+import com.hust.wearcorporation.dao.CartRepository;
+import com.hust.wearcorporation.dao.ProductRepository;
+import com.hust.wearcorporation.dto.ProductInCart;
+import com.hust.wearcorporation.model.Product;
+import com.hust.wearcorporation.service.CartService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

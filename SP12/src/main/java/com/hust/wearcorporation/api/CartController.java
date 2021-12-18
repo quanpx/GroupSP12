@@ -1,11 +1,11 @@
-package com.example.demo.api;
+package com.hust.wearcorporation.api;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.dto.ProductInCart;
-import com.example.demo.model.Product;
-import com.example.demo.service.impl.CartServiceImpl;
+import com.hust.wearcorporation.dto.ProductInCart;
+import com.hust.wearcorporation.model.Product;
+import com.hust.wearcorporation.service.impl.CartServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;

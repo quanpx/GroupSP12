@@ -1,10 +1,10 @@
-package com.example.demo.service;
+package com.hust.wearcorporation.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.dto.ProductInCart;
-import com.example.demo.model.Product;
+import com.hust.wearcorporation.dto.ProductInCart;
+import com.hust.wearcorporation.model.Product;
 
 public interface CartService {
     public void addProductToCart(Product product);
