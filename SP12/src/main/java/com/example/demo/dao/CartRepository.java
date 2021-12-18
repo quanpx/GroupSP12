@@ -22,8 +22,13 @@ public class CartRepository {
     }
 
     public void addProductToCart(Product product) {
-        ProductInCart newProduct = new ProductInCart(product.getProduct_id(), product.getProduct_name(), product.getPrice(), 1, 1);
-        productInCartList.add(newProduct);
+        Optional<ProductInCart> productInCart = getProductInCartById(product.getProduct_id());
+        if (productInCart.isEmpty()) {
+            ProductInCart newProduct = new ProductInCart(product.getProduct_id(), product.getProduct_name(), product.getPrice(), 1, 1);
+            productInCartList.add(newProduct);
+        }else {
+            productInCart.get().setQuantity(productInCart.get().getQuantity()+1);
+        }
     }
 
     public Optional<ProductInCart> getProductInCartById(String product_id) {
