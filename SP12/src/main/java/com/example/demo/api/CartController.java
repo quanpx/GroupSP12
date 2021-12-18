@@ -49,9 +49,6 @@ public class CartController {
 
     @PutMapping(path = "{product_id}")
     public String updateProductQuantityInCart(@PathVariable("product_id") String product_id, @RequestBody ProductInCart productInCart) {
-        if (cartService.checkAvailableProduct(product_id,productInCart.getQuantity())) { 
-            cartService.updateProductQuantityInCart(product_id, productInCart);
-            return "Update successfully";
-        } else return "Update unsuccessfully";
+        return cartService.updateProductQuantityInCart(product_id, productInCart);
     }
 }

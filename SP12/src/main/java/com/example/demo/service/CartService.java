@@ -27,12 +27,15 @@ public class CartService {
     }
 
     public List<ProductInCart> getCart() {
-	    for (ProductInCart p: cartRepository.getProductInCartList()
-             ) {
-            p.setPrice(productRepository.findById(p.getProduct_id()).get().getPrice());
-            p.setProduct_name(productRepository.findById(p.getProduct_id()).get().getProduct_name());
+	    for (ProductInCart p: cartRepository.getProductInCartList()) {
+              Optional<Product> product = productRepository.findById(p.getProduct_id());
+              p.setPrice(product.get().getPrice());
+              p.setProduct_name(product.get().getProduct_name());
+              if (checkAvailableProduct(p.getProduct_id(),p.getQuantity())) {
+                  p.setStatus(1);
+              } else p.setStatus(0);
         };
-		return cartRepository.getProductInCartList();
+        return cartRepository.getProductInCartList();
 	}
 
     public Optional<ProductInCart> getProductInCartById(String product_id){
@@ -43,13 +46,16 @@ public class CartService {
         return cartRepository.removeProductFromCart(product_id);
     }
 
-    public void updateProductQuantityInCart(String product_id, ProductInCart productInCart) {
-        cartRepository.updateProductQuantityInCart(product_id, productInCart);
+    public String updateProductQuantityInCart(String product_id, ProductInCart productInCart) {
+        if (checkAvailableProduct(product_id,productInCart.getQuantity())) {
+            cartRepository.updateProductQuantityInCart(product_id, productInCart);
+            return "Update successfully";
+        } else return "Update unsuccessfully";
     }
 
     public boolean checkAvailableProduct(String product_id, int value) {
         Optional<Product> product = productRepository.findById(product_id);
-        if (product.get().getQuantity_storage()>=value) {
+        if (product.get().getQuantity_storage() >= value) {
             return true;
         } else return false;
     }

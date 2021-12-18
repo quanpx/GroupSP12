@@ -7,7 +7,8 @@ public class ProductInCart {
     private String product_id;
     private String product_name;
     private int price;
-    private int quantity;       
+    private int quantity;
+    private int status;  
 
     public ProductInCart() {
         
@@ -16,11 +17,13 @@ public class ProductInCart {
     public ProductInCart(@JsonProperty("product_id") String product_id,
                          @JsonProperty("product_name") String product_name,
                          @JsonProperty("price") int price,
-                         @JsonProperty("quantity") int quantity) {
+                         @JsonProperty("quantity") int quantity,
+                         @JsonProperty("status") int status) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.price = price;
         this.quantity = quantity;
+        this.status = status;
     }
 
     public String getProduct_id() {
@@ -54,4 +57,12 @@ public class ProductInCart {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    public int getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }     
 }
