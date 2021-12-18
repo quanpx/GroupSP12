@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.demo.dto.ProductInCart;
 import com.example.demo.model.Product;
-import com.example.demo.model.ProductInCart;
 
 import org.springframework.stereotype.Repository;
 
@@ -26,8 +26,8 @@ public class CartRepository {
         if (productInCart.isEmpty()) {
             ProductInCart newProduct = new ProductInCart(product.getProduct_id(), product.getProduct_name(), product.getPrice(), 1, 1);
             productInCartList.add(newProduct);
-        }else {
-            productInCart.get().setQuantity(productInCart.get().getQuantity()+1);
+        } else {
+            productInCart.get().setQuantity(productInCart.get().getQuantity() + 1);
         }
     }
 
@@ -58,5 +58,9 @@ public class CartRepository {
                     return 0;
                 })
                 .orElse(0);
+    }
+
+    public void makeEmptyCart() {
+        productInCartList.clear();
     }
 }

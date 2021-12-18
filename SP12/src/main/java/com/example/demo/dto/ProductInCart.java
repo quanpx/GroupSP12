@@ -1,24 +1,29 @@
-package com.example.demo.model;
+package com.example.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class ProductInCart {
+    @JsonProperty("product_id")
     private String product_id;
+
+    @JsonProperty("product_name")
     private String product_name;
+
+    @JsonProperty("price")
     private int price;
+
+    @JsonProperty("quantity")
     private int quantity;
+
+    @JsonProperty("status")
     private int status;  
 
     public ProductInCart() {
         
     }
 
-    public ProductInCart(@JsonProperty("product_id") String product_id,
-                         @JsonProperty("product_name") String product_name,
-                         @JsonProperty("price") int price,
-                         @JsonProperty("quantity") int quantity,
-                         @JsonProperty("status") int status) {
+    public ProductInCart(String product_id, String product_name, int price, int quantity, int status) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.price = price;
