@@ -3,8 +3,8 @@ package com.hust.wearcorporation.service.impl;
 import java.util.List;
 import java.util.Optional;
 
-import com.hust.wearcorporation.dao.CartRepository;
 import com.hust.wearcorporation.dao.ProductRepository;
+import com.hust.wearcorporation.dao.impl.CartRepositoryImpl;
 import com.hust.wearcorporation.dto.ProductInCart;
 import com.hust.wearcorporation.model.Product;
 import com.hust.wearcorporation.service.CartService;
@@ -14,12 +14,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CartServiceImpl implements CartService{
-    private final CartRepository cartRepository;
+    private final CartRepositoryImpl cartRepository;
     private final ProductRepository productRepository;
     private final ProductServiceImpl productService;
 
     @Autowired
-    public CartServiceImpl(CartRepository cartRepository, ProductRepository productRepository, ProductServiceImpl productService) {
+    public CartServiceImpl(CartRepositoryImpl cartRepository, ProductRepository productRepository, ProductServiceImpl productService) {
         this.cartRepository = cartRepository;
         this.productRepository = productRepository;
         this.productService = productService;
