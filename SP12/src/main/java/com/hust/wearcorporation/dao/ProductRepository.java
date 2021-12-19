@@ -1,6 +1,6 @@
 package com.hust.wearcorporation.dao;
 
-import com.hust.wearcorporation.model.Product;
+import com.hust.wearcorporation.entity.Product;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

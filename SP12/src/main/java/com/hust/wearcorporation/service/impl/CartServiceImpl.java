@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import com.hust.wearcorporation.dao.ProductRepository;
 import com.hust.wearcorporation.dao.impl.CartRepositoryImpl;
-import com.hust.wearcorporation.dto.ProductInCart;
-import com.hust.wearcorporation.model.Product;
+import com.hust.wearcorporation.dto.CartProductDto;
+import com.hust.wearcorporation.entity.Product;
 import com.hust.wearcorporation.service.CartService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,13 +31,13 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
-    public List<ProductInCart> getCart() {
+    public List<CartProductDto> getCart() {
 	    updateCart();
         return cartRepository.getProductInCartList();
 	}
 
     @Override
-    public Optional<ProductInCart> getProductInCartById(String product_id){
+    public Optional<CartProductDto> getProductInCartById(String product_id){
         return cartRepository.getProductInCartById(product_id);
     }
 
@@ -47,7 +47,7 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
-    public String updateProductQuantityInCart(String product_id, ProductInCart productInCart) {
+    public String updateProductQuantityInCart(String product_id, CartProductDto productInCart) {
         if (productService.checkAvailableProduct(product_id, productInCart.getQuantity())) {
             cartRepository.updateProductQuantityInCart(product_id, productInCart);
             return "Update successfully";
@@ -62,7 +62,7 @@ public class CartServiceImpl implements CartService{
     public boolean checkCart() {
         updateCart();
         boolean check = false;
-        for (ProductInCart p : cartRepository.getProductInCartList()) {
+        for (CartProductDto p : cartRepository.getProductInCartList()) {
             if (p.getStatus() == 0) {
                 check = false;
                 break;
@@ -73,7 +73,7 @@ public class CartServiceImpl implements CartService{
     }
 
     public void updateCart() {
-        for (ProductInCart p : cartRepository.getProductInCartList()) {
+        for (CartProductDto p : cartRepository.getProductInCartList()) {
             Optional<Product> product = productRepository.findById(p.getProduct_id());
             p.setPrice(product.get().getPrice());
             p.setProduct_name(product.get().getProduct_name());

@@ -1,4 +1,4 @@
-package com.hust.wearcorporation.model;
+package com.hust.wearcorporation.entity;
 
 import java.io.Serializable;
 

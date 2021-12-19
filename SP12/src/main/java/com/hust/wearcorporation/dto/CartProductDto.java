@@ -3,7 +3,7 @@ package com.hust.wearcorporation.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-public class ProductInCart {
+public class CartProductDto {
     @JsonProperty("product_id")
     private String product_id;
 
@@ -19,11 +19,11 @@ public class ProductInCart {
     @JsonProperty("status")
     private int status;  
 
-    public ProductInCart() {
+    public CartProductDto() {
         
     }
 
-    public ProductInCart(String product_id, String product_name, int price, int quantity, int status) {
+    public CartProductDto(String product_id, String product_name, int price, int quantity, int status) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.price = price;

@@ -2,7 +2,7 @@ package com.hust.wearcorporation.api;
 
 import java.util.List;
 
-import com.hust.wearcorporation.model.Product;
+import com.hust.wearcorporation.entity.Product;
 import com.hust.wearcorporation.service.impl.ProductServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;

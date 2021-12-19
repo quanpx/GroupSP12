@@ -3,8 +3,8 @@ package com.hust.wearcorporation.api;
 import java.util.List;
 import java.util.Optional;
 
-import com.hust.wearcorporation.dto.ProductInCart;
-import com.hust.wearcorporation.model.Product;
+import com.hust.wearcorporation.dto.CartProductDto;
+import com.hust.wearcorporation.entity.Product;
 import com.hust.wearcorporation.service.impl.CartServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,12 +33,12 @@ public class CartController {
     }
 
     @GetMapping
-	public List<ProductInCart> getCart() {
+	public List<CartProductDto> getCart() {
 		return cartService.getCart();
 	}
 
     @GetMapping(path = "{product_id}")
-    public Optional<ProductInCart> getProductInCartById(@PathVariable("product_id") String product_id) {
+    public Optional<CartProductDto> getProductInCartById(@PathVariable("product_id") String product_id) {
         return cartService.getProductInCartById(product_id);
     }
 
@@ -48,7 +48,7 @@ public class CartController {
     }
 
     @PutMapping(path = "{product_id}")
-    public String updateProductQuantityInCart(@PathVariable("product_id") String product_id, @RequestBody ProductInCart productInCart) {
+    public String updateProductQuantityInCart(@PathVariable("product_id") String product_id, @RequestBody CartProductDto productInCart) {
         return cartService.updateProductQuantityInCart(product_id, productInCart);
     }
 

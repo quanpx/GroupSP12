@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.hust.wearcorporation.dao.ProductRepository;
-import com.hust.wearcorporation.model.Product;
+import com.hust.wearcorporation.entity.Product;
 import com.hust.wearcorporation.service.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -5,25 +5,25 @@ import java.util.List;
 import java.util.Optional;
 
 import com.hust.wearcorporation.dao.CartRepository;
-import com.hust.wearcorporation.dto.ProductInCart;
-import com.hust.wearcorporation.model.Product;
+import com.hust.wearcorporation.dto.CartProductDto;
+import com.hust.wearcorporation.entity.Product;
 
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class CartRepositoryImpl implements CartRepository {
-    private List<ProductInCart> productInCartList = new ArrayList<>();
+    private List<CartProductDto> productInCartList = new ArrayList<>();
 
     @Override
-    public List<ProductInCart> getProductInCartList() {
+    public List<CartProductDto> getProductInCartList() {
         return this.productInCartList;
     }
 
     @Override
     public void addProductToCart(Product product) {
-        Optional<ProductInCart> productInCart = getProductInCartById(product.getProduct_id());
+        Optional<CartProductDto> productInCart = getProductInCartById(product.getProduct_id());
         if (productInCart.isEmpty()) {
-            ProductInCart newProduct = new ProductInCart(product.getProduct_id(), product.getProduct_name(), product.getPrice(), 1, 1);
+            CartProductDto newProduct = new CartProductDto(product.getProduct_id(), product.getProduct_name(), product.getPrice(), 1, 1);
             productInCartList.add(newProduct);
         } else {
             productInCart.get().setQuantity(productInCart.get().getQuantity() + 1);
@@ -31,7 +31,7 @@ public class CartRepositoryImpl implements CartRepository {
     }
 
     @Override
-    public Optional<ProductInCart> getProductInCartById(String product_id) {
+    public Optional<CartProductDto> getProductInCartById(String product_id) {
         return productInCartList.stream()
                 .filter(productInCart -> productInCart.getProduct_id().equals(product_id))
                 .findFirst();
@@ -39,7 +39,7 @@ public class CartRepositoryImpl implements CartRepository {
 
     @Override
     public int removeProductFromCart(String product_id) {
-        Optional<ProductInCart> productInCart = getProductInCartById(product_id);
+        Optional<CartProductDto> productInCart = getProductInCartById(product_id);
         if (productInCart.isEmpty()) {
             return 0;
         }
@@ -48,13 +48,13 @@ public class CartRepositoryImpl implements CartRepository {
     }
 
     @Override
-    public int updateProductQuantityInCart(String product_id, ProductInCart productInCart) {
-        Optional<ProductInCart> tempProduct = getProductInCartById(product_id);
+    public int updateProductQuantityInCart(String product_id, CartProductDto productInCart) {
+        Optional<CartProductDto> tempProduct = getProductInCartById(product_id);
         return tempProduct
                 .map(product -> {
                     int indexOfProductInCartToUpdate = productInCartList.indexOf(product);
                     if (indexOfProductInCartToUpdate >= 0) {
-                        productInCartList.set(indexOfProductInCartToUpdate, new ProductInCart(product_id, tempProduct.get().getProduct_name(), tempProduct.get().getPrice(), productInCart.getQuantity(), 1));
+                        productInCartList.set(indexOfProductInCartToUpdate, new CartProductDto(product_id, tempProduct.get().getProduct_name(), tempProduct.get().getPrice(), productInCart.getQuantity(), 1));
                         return 1;
                     }
                     return 0;
