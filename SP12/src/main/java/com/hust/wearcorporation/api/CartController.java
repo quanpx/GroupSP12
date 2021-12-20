@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.hust.wearcorporation.dto.CartProductDto;
 import com.hust.wearcorporation.entity.Product;
-import com.hust.wearcorporation.service.impl.CartServiceImpl;
+import com.hust.wearcorporation.service.CartService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "api/v1/cart")
 public class CartController {
-    private final CartServiceImpl cartService;
+    private CartService cartService;
 
     @Autowired
-	public CartController(CartServiceImpl cartService) {
+	public CartController(CartService cartService) {
         this.cartService = cartService;
     }
 
@@ -48,7 +48,8 @@ public class CartController {
     }
 
     @PutMapping(path = "{product_id}")
-    public String updateProductQuantityInCart(@PathVariable("product_id") String product_id, @RequestBody CartProductDto productInCart) {
+    public String updateProductQuantityInCart(@PathVariable("product_id") String product_id, 
+                                            @RequestBody CartProductDto productInCart) {
         return cartService.updateProductQuantityInCart(product_id, productInCart);
     }
 

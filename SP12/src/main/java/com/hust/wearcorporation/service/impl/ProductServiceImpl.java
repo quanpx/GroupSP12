@@ -24,6 +24,7 @@ public class ProductServiceImpl implements ProductService{
 		return productRepository.findAll();
 	}
 
+	@Override
 	public boolean checkAvailableProduct(String product_id, int value) {
         Optional<Product> product = productRepository.findById(product_id);
         if (product.get().getQuantity_storage() >= value) {
